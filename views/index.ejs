@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Mystic Cards</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Mystic Cards</h1>
+
+        <p>
+            Discover the traditional meanings of Tarot cards.
+        </p>
+
+    </header>
+
+
+    <main>
+
+        <!-- Card selection -->
+
+        <section class="card-picker">
+
+            <h2>Draw a Tarot Card</h2>
+
+            <p>
+                Choose a category for your reading.
+            </p>
+
+            <form action="/draw" method="POST">
+
+                <label for="category">
+                    What would you like to focus on?
+                </label>
+
+                <select name="category" id="category">
+
+                    <option value="general">
+                        General
+                    </option>
+
+                    <option value="love">
+                        Love 
+                    </option>
+
+                    <option value="career">
+                        Career
+                    </option>
+
+                    <option value="finances">
+                        Finances
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Draw Card
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Error message -->
+
+        <% if (error) { %>
+
+            <section class="error">
+
+                <h2>Something went wrong</h2>
+
+                <p>
+                    <%= error %>
+                </p>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- Tarot card result -->
+
+        <% if (card) { %>
+
+            <section class="tarot-result">
+
+                <div class="card-information">
+
+                    <h2>
+                        <%= card.name %>
+                    </h2>
+
+                    <p>
+                        <strong>Card:</strong>
+                        <%= card.value_int %>
+                    </p>
+
+
+                    <h3>Upright Meaning</h3>
+
+                    <p>
+                        <%= card.meaning_up %>
+                    </p>
+
+
+                    <h3>Reversed Meaning</h3>
+
+                    <p>
+                        <%= card.meaning_rev %>
+                    </p>
+
+
+                    <h3>Description</h3>
+
+                    <p>
+                        <%= card.desc %>
+                    </p>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            Tarot interpretations are for entertainment
+            and personal reflection. Take What resonates, leave what doesn't. 
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+
